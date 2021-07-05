@@ -17,13 +17,14 @@ namespace ScreenDimmer
                     new MenuItem("Exit", Exit)
                 }),
                 Visible = true,
-                Text = "ScreenDimmer - Save your eyes"
+                Text = "ScreenDimmer - Save your eyes!"
             };
         }
 
         void Exit(object sender, EventArgs e)
         {
             trayIcon.Visible = false;
+            trayIcon.Dispose();
             Application.Exit();
         }
     }
