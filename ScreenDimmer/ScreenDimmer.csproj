@@ -75,5 +75,8 @@
   <ItemGroup>
     <None Include="Resources\ScreenDimmerTrayIcon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScreenDimmerTrayImage.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

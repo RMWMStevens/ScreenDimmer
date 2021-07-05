@@ -16,7 +16,8 @@ namespace ScreenDimmer
                 ContextMenu = new ContextMenu(new MenuItem[] {
                     new MenuItem("Exit", Exit)
                 }),
-                Visible = true
+                Visible = true,
+                Text = "ScreenDimmer - Save your eyes"
             };
         }
 
