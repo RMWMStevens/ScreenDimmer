@@ -24,7 +24,6 @@ namespace ScreenDimmer.Contexts
 
         private void HotKeyPressed(object sender, EventArgs e)
         {
-            Console.WriteLine("Key combination has been pressed");
             screenService.ToggleDimming();
         }
 
