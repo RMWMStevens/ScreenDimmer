@@ -21,15 +21,15 @@ namespace ScreenDimmer.Contexts
                     new MenuItem("Exit", Exit)
                 }),
                 Visible = true,
-                Text = "ScreenDimmer - Save your eyes!",
+                Text = "ScreenDimmer - Click to dim secondary screens",
             };
-            trayIcon.MouseClick += trayIcon_MouseClick;
+            trayIcon.MouseClick += NotifyIcon_MouseClick;
 
             screens = Screen.AllScreens;
             dimForms = new List<DimForm>();
         }
 
-        private void trayIcon_MouseClick(object sender, EventArgs e)
+        private void NotifyIcon_MouseClick(object sender, EventArgs e)
         {
             ToggleDimming();
         }
