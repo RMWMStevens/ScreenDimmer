@@ -1,69 +1,30 @@
-﻿using ScreenDimmer.Forms;
-using ScreenDimmer.Properties;
+﻿using ScreenDimmer.Services;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ScreenDimmer.Contexts
 {
     public class ScreenDimmerContext : ApplicationContext
     {
-        readonly NotifyIcon trayIcon;
-        readonly Screen[] screens;
-        readonly List<DimForm> dimForms;
+        readonly TrayIconService trayIconService;
+        readonly ScreenService screenService;
 
         public ScreenDimmerContext()
         {
-            trayIcon = new NotifyIcon
-            {
-                Icon = Resources.ScreenDimmerTrayIcon,
-                ContextMenu = new ContextMenu(new MenuItem[] {
-                    new MenuItem("Exit", Exit)
-                }),
-                Visible = true,
-                Text = "ScreenDimmer - Click to dim secondary screens",
-            };
-            trayIcon.MouseClick += NotifyIcon_MouseClick;
-
-            screens = Screen.AllScreens;
-            dimForms = new List<DimForm>();
+            trayIconService = new TrayIconService();
+            trayIconService.TrayIcon.MouseClick += NotifyIcon_MouseClick;
+            trayIconService.SetContextMenu(Exit);
         }
 
         private void NotifyIcon_MouseClick(object sender, EventArgs e)
         {
-            ToggleDimming();
-        }
-
-        void ToggleDimming()
-        {
-            if (dimForms.Count > 0) { DisableDimming(); }
-            else { EnableDimming(); }
-        }
-
-        void EnableDimming()
-        {
-            foreach (var screen in screens)
-            {
-                if (screen.Primary) { continue; }
-                var dimForm = new DimForm(screen);
-                dimForm.Show();
-                dimForms.Add(dimForm);
-            }
-        }
-
-        void DisableDimming()
-        {
-            foreach (var dimForm in dimForms)
-            {
-                dimForm.Close();
-            }
-            dimForms.Clear();
+            screenService.ToggleDimming();
         }
 
         void Exit(object sender, EventArgs e)
         {
-            trayIcon.Visible = false;
-            trayIcon.Dispose();
+            trayIconService.TrayIcon.Visible = false;
+            trayIconService.TrayIcon.Dispose();
             Application.Exit();
         }
     }
