@@ -14,8 +14,8 @@ namespace ScreenDimmer.Contexts
             trayIconService = new TrayIconService();
             screenService = new ScreenService();
 
-            trayIconService.TrayIcon.MouseClick += NotifyIcon_MouseClick;
             trayIconService.SetContextMenu(Exit);
+            trayIconService.SetMouseClickEvent(NotifyIcon_MouseClick);
         }
 
         private void NotifyIcon_MouseClick(object sender, EventArgs e)

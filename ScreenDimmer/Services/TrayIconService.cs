@@ -7,7 +7,6 @@ namespace ScreenDimmer.Services
     public class TrayIconService
     {
         readonly NotifyIcon trayIcon;
-        public NotifyIcon TrayIcon { get { return trayIcon; } }
 
         public TrayIconService()
         {
@@ -25,6 +24,11 @@ namespace ScreenDimmer.Services
             {
                 new MenuItem("Exit", exitHandler)
             });
+        }
+
+        public void SetMouseClickEvent(MouseEventHandler mouseClickHandler)
+        {
+            trayIcon.MouseClick += mouseClickHandler;
         }
 
         public void RemoveIconFromTray()
