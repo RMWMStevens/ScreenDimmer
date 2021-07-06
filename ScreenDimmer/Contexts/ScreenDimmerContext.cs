@@ -21,17 +21,28 @@ namespace ScreenDimmer.Contexts
                     new MenuItem("Exit", Exit)
                 }),
                 Visible = true,
-                Text = "ScreenDimmer - Save your eyes!"
+                Text = "ScreenDimmer - Save your eyes!",
             };
+            trayIcon.MouseClick += trayIcon_MouseClick;
 
             screens = Screen.AllScreens;
             dimForms = new List<DimForm>();
-            EnableDimming();
+        }
+
+        private void trayIcon_MouseClick(object sender, EventArgs e)
+        {
+            ToggleDimming();
+        }
+
+        void ToggleDimming()
+        {
+            if (dimForms.Count > 0) { DisableDimming(); }
+            else { EnableDimming(); }
         }
 
         void EnableDimming()
         {
-            foreach(var screen in screens)
+            foreach (var screen in screens)
             {
                 if (screen.Primary) { continue; }
                 var dimForm = new DimForm(screen);
