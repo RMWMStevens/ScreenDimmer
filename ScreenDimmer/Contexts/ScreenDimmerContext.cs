@@ -1,5 +1,4 @@
-﻿using ScreenDimmer.Helpers;
-using ScreenDimmer.Services;
+﻿using ScreenDimmer.Services;
 using System;
 using System.Windows.Forms;
 
@@ -9,26 +8,34 @@ namespace ScreenDimmer.Contexts
     {
         readonly TrayIconService trayService;
         readonly ScreenService screenService;
+        readonly HotKeyService hotkeyService;
 
         public ScreenDimmerContext()
         {
             trayService = new TrayIconService();
             screenService = new ScreenService();
+            (hotkeyService = new HotKeyService()).Register();
 
             trayService.SetContextMenu(Exit);
-            trayService.SetMouseClickEvent(NotifyIcon_MouseClick);
+            trayService.SetMouseClickEvent(NotifyIconClicked);
 
-            KeyInterceptionHelper.Set();
+            hotkeyService.HotKeyPressed += HotKeyPressed;
         }
 
-        private void NotifyIcon_MouseClick(object sender, EventArgs e)
+        private void HotKeyPressed(object sender, EventArgs e)
+        {
+            Console.WriteLine("Key combination has been pressed");
+            screenService.ToggleDimming();
+        }
+
+        private void NotifyIconClicked(object sender, EventArgs e)
         {
             screenService.ToggleDimming();
         }
 
         void Exit(object sender, EventArgs e)
         {
-            KeyInterceptionHelper.Unset();
+            hotkeyService.Unregister();
             trayService.RemoveIconFromTray();
             Application.Exit();
         }
