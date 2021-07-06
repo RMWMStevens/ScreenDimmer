@@ -5,7 +5,8 @@ using System.Windows.Forms;
 namespace ScreenDimmer.Services
 {
     /* 
-        Credit for capturing key presses: https://stackoverflow.com/questions/15413172/capture-a-keyboard-keypress-in-the-background
+        Credit for capturing key presses: 
+        https://stackoverflow.com/questions/15413172/capture-a-keyboard-keypress-in-the-background
     */
     public class HotKeyService : Form
     {

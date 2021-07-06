@@ -5,7 +5,11 @@ namespace ScreenDimmer.Forms
 {
     public partial class DimForm : Form
     {
-        protected override CreateParams CreateParams /* Credit: https://github.com/zingmars/ScreenBlank */
+        /* 
+            Credit hiding ScreenDimmer windows from Alt-Tab:
+            https://github.com/zingmars/ScreenBlank
+        */
+        protected override CreateParams CreateParams
         {
             get
             {
