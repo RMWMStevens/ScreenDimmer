@@ -26,5 +26,11 @@ namespace ScreenDimmer.Services
                 new MenuItem("Exit", exitHandler)
             });
         }
+
+        public void RemoveIconFromTray()
+        {
+            trayIcon.Visible = false;
+            trayIcon.Dispose();
+        }
     }
 }

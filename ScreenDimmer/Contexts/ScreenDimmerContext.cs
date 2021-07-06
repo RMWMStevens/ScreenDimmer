@@ -12,6 +12,8 @@ namespace ScreenDimmer.Contexts
         public ScreenDimmerContext()
         {
             trayIconService = new TrayIconService();
+            screenService = new ScreenService();
+
             trayIconService.TrayIcon.MouseClick += NotifyIcon_MouseClick;
             trayIconService.SetContextMenu(Exit);
         }
@@ -23,8 +25,7 @@ namespace ScreenDimmer.Contexts
 
         void Exit(object sender, EventArgs e)
         {
-            trayIconService.TrayIcon.Visible = false;
-            trayIconService.TrayIcon.Dispose();
+            trayIconService.RemoveIconFromTray();
             Application.Exit();
         }
     }
