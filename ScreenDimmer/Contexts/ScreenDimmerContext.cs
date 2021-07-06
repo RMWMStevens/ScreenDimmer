@@ -1,4 +1,5 @@
-﻿using ScreenDimmer.Services;
+﻿using ScreenDimmer.Helpers;
+using ScreenDimmer.Services;
 using System;
 using System.Windows.Forms;
 
@@ -6,16 +7,18 @@ namespace ScreenDimmer.Contexts
 {
     public class ScreenDimmerContext : ApplicationContext
     {
-        readonly TrayIconService trayIconService;
+        readonly TrayIconService trayService;
         readonly ScreenService screenService;
 
         public ScreenDimmerContext()
         {
-            trayIconService = new TrayIconService();
+            trayService = new TrayIconService();
             screenService = new ScreenService();
 
-            trayIconService.SetContextMenu(Exit);
-            trayIconService.SetMouseClickEvent(NotifyIcon_MouseClick);
+            trayService.SetContextMenu(Exit);
+            trayService.SetMouseClickEvent(NotifyIcon_MouseClick);
+
+            KeyInterceptionHelper.Set();
         }
 
         private void NotifyIcon_MouseClick(object sender, EventArgs e)
@@ -25,7 +28,8 @@ namespace ScreenDimmer.Contexts
 
         void Exit(object sender, EventArgs e)
         {
-            trayIconService.RemoveIconFromTray();
+            KeyInterceptionHelper.Unset();
+            trayService.RemoveIconFromTray();
             Application.Exit();
         }
     }

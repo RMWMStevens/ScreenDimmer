@@ -55,6 +55,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Contexts\ScreenDimmerContext.cs" />
+    <Compile Include="Helpers\KeyInterceptionHelper.cs" />
     <Compile Include="Services\ScreenService.cs" />
     <Compile Include="Services\TrayIconService.cs" />
     <EmbeddedResource Include="Forms\DimForm.resx">
