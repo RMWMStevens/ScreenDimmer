@@ -1,6 +1,6 @@
 # ScreenDimmer
 
-A C# tray application that enables DisplayFusion-like screen dimming with only a fraction of the memory usage and no (what I consider) bloat.
+A C# tray application that enables DisplayFusion-like (secondary) screen dimming with only a fraction of the memory usage (~4.5 MB vs ~83 MB combined) and no (what I consider) bloat.
 
 For years I have used DisplayFusion to fulfill this singular task, but it has always annoyed me that it is paid software which makes activating it mandatory and makes using it on different user profiles in Windows a pain sometimes. Also, I don't use any other feature DisplayFusion offers and most of them are just annoying to me, so I have to painstakingly disable every single feature and just enable the one I use the whole software for. Also, I have Steam installed on my desktop but not my laptop and I don't want it there either, so dimming screens when working on multiple monitors (via Remote Desktop) is no option at all for me.
 
