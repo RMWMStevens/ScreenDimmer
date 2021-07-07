@@ -18,17 +18,18 @@ namespace ScreenDimmer.Services
             };
         }
 
-        public void SetContextMenu(EventHandler exitHandler)
+        public void SetContextMenu(EventHandler settingsHandler, EventHandler exitHandler)
         {
             trayIcon.ContextMenu = new ContextMenu(new MenuItem[]
             {
+                new MenuItem("Settings", settingsHandler),
                 new MenuItem("Exit", exitHandler)
             });
         }
 
-        public void SetMouseClickEvent(MouseEventHandler mouseClickHandler)
+        public void SetMouseClickEvent(EventHandler clickHandler)
         {
-            trayIcon.MouseClick += mouseClickHandler;
+            trayIcon.DoubleClick += clickHandler;
         }
 
         public void RemoveIconFromTray()
