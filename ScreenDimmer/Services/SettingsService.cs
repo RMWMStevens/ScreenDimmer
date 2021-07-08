@@ -1,11 +1,20 @@
 ﻿using ScreenDimmer.Forms;
-using System;
+using ScreenDimmer.Models;
 
 namespace ScreenDimmer.Services
 {
     public class SettingsService
     {
         SettingsForm settingsForm;
+
+        public SettingsService()
+        {
+            SettingsForm.Settings = new Settings
+            {
+                IgnorePrimary = true,
+                IgnoreFullscreen = false,
+            };
+        }
 
         public void Show()
         {

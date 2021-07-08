@@ -21,7 +21,7 @@ namespace ScreenDimmer.Contexts
             trayService.SetContextMenu(ShowSettings, Exit);
             trayService.SetMouseClickEvent(TrayIconClicked);
 
-            hotkeyService.HotKeyPressed += HotKeyPressed;
+            hotkeyService.HotKeyPressedEvent += HotKeyPressed;
         }
 
         private void HotKeyPressed(object sender, EventArgs e)

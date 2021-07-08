@@ -70,8 +70,12 @@
     <Compile Include="Services\DimService.cs" />
     <Compile Include="Services\SettingsService.cs" />
     <Compile Include="Services\TrayIconService.cs" />
+    <Compile Include="Models\Settings.cs" />
     <EmbeddedResource Include="Forms\DimForm.resx">
       <DependentUpon>DimForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

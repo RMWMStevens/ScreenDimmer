@@ -25,7 +25,8 @@ namespace ScreenDimmer.Services
         {
             foreach (var screen in screens)
             {
-                if (screen.Primary) { continue; }
+                if (SettingsForm.Settings.IgnorePrimary && screen.Primary) { continue; }
+
                 var dimForm = new DimForm(screen);
                 dimForm.Show();
                 dimForms.Add(dimForm);

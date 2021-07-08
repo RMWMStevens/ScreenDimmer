@@ -10,9 +10,9 @@ namespace ScreenDimmer.Services
     */
     public class HotKeyService : Form
     {
-        int hotKeyId = 1;
+        const int hotKeyId = 1;
 
-        public event EventHandler HotKeyPressed;
+        public event EventHandler HotKeyPressedEvent;
 
         public void Register()
         {
@@ -21,7 +21,11 @@ namespace ScreenDimmer.Services
                 Compute the addition of each combination of the keys you want to be pressed
                 ALT+CTRL = 1 + 2 = 3 , CTRL+SHIFT = 2 + 4 = 6...
             */
-            RegisterHotKey(this.Handle, hotKeyId, hotKeyId * 2, (int)Keys.Decimal);
+            RegisterHotKey(
+                Handle,
+                hotKeyId,
+                hotKeyId * 2,
+                (int)Keys.Decimal);
         }
 
         public void Unregister()
@@ -31,10 +35,10 @@ namespace ScreenDimmer.Services
 
         protected override void WndProc(ref Message m)
         {
-            if (m.Msg == 0x0312 && m.WParam.ToInt32() == hotKeyId)
+            if (m.Msg == 0x0312 && m.WParam.ToInt32() == 1)
             {
                 // Hotkey triggered
-                this.HotKeyPressed(this, null);
+                HotKeyPressedEvent(this, null);
             }
             base.WndProc(ref m);
         }
