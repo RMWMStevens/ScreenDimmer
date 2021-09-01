@@ -4,35 +4,36 @@ using System.Windows.Forms;
 
 namespace ScreenDimmer.Services
 {
-    public class ScreenService
+    public class DimService
     {
         readonly Screen[] screens;
         readonly List<DimForm> dimForms;
 
-        public ScreenService()
+        public DimService()
         {
             screens = Screen.AllScreens;
             dimForms = new List<DimForm>();
         }
 
-        public void ToggleDimming()
+        public void Toggle()
         {
-            if (dimForms.Count > 0) { DisableDimming(); }
-            else { EnableDimming(); }
+            if (dimForms.Count > 0) { Disable(); }
+            else { Enable(); }
         }
 
-        void EnableDimming()
+        void Enable()
         {
             foreach (var screen in screens)
             {
-                if (screen.Primary) { continue; }
+                if (SettingsForm.Settings.IgnorePrimary && screen.Primary) { continue; }
+
                 var dimForm = new DimForm(screen);
                 dimForm.Show();
                 dimForms.Add(dimForm);
             }
         }
 
-        void DisableDimming()
+        void Disable()
         {
             foreach (var dimForm in dimForms)
             {
