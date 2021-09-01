@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\ScreenDimmerTrayIcon.ico</ApplicationIcon>
+    <ApplicationIcon>ScreenDimmerTrayIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -106,6 +106,9 @@
   <ItemGroup>
     <None Include="Resources\ScreenDimmerTrayImage.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="ScreenDimmerTrayIcon.ico" />
+    <Content Include="ScreenDimmerTrayImage.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
