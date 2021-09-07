@@ -18,8 +18,9 @@ namespace ScreenDimmer.Services
 
         public void Show()
         {
-            if (settingsForm == null) { settingsForm = new SettingsForm(); }
+            if (settingsForm != null) { settingsForm.Dispose(); }
 
+            settingsForm = new SettingsForm();
             settingsForm.Show();
         }
 

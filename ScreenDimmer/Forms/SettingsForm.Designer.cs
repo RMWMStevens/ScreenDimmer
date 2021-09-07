@@ -68,6 +68,7 @@ namespace ScreenDimmer.Forms
             this.IgnorePrimaryCb.TabIndex = 2;
             this.IgnorePrimaryCb.Text = "Ignore primary";
             this.IgnorePrimaryCb.UseVisualStyleBackColor = true;
+            this.IgnorePrimaryCb.Visible = false;
             this.IgnorePrimaryCb.CheckedChanged += new System.EventHandler(this.IgnorePrimaryCb_CheckedChanged);
             // 
             // SettingsForm
